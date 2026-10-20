@@ -52,4 +52,4 @@ com.phorus.playfi.softap                  # DTS Play-Fi soft access point
 # Batch 4: after launcher/build-and-install.sh has moved Home and disabled com.google.android.tvlauncher.
 # The stock launcher holds a provider reference into this package and owns the notification side panel;
 # disabling it before the handover kills the live launcher.
-#B# com.google.android.tvrecommendations      # "Android TV Core Services": recommendation rows, notification panel
+com.google.android.tvrecommendations      # "Android TV Core Services": recommendation rows, notification panel
