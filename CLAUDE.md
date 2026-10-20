@@ -111,11 +111,11 @@ Repo tests (host side, no TV): `python3 -m pytest tests/`.
 - `PROMPT.md` — upstream's generic assistant prompt; this CLAUDE.md replaces it for this fork.
 
 ## Verified on this TV (tick as done)
-- [ ] ADB connection over 5555 and "Allow USB debugging" accepted (2026-10-20: port 5555 refused connection; JointSpace 1925/1926 up)
-- [ ] Backup dump taken, recovery record written
-- [ ] Debloat batch 1 applied, Home / Ambilight / Play Store / HDMI / channels OK
-- [ ] Debloat batch 2+ applied, same checks
-- [ ] Launcher built with JDK 17 / SDK 34
+- [x] ADB connection over 5555 authorised (2026-10-20; dialog only appeared after a mains power cycle while MAXtv owned Home)
+- [x] Backup dump taken (backup/20261020-1943-stock), recovery record written
+- [x] Debloat batches 1–3 applied (27 packages), no crashes/ANR, Home, tuner, HDMI, Play Store, JointSpace alive
+- [ ] Debloat batch 4 (recommendation rows) applied after the new launcher owns Home
+- [x] Launcher built with JDK 17 / SDK 34 (395 KB, unit tests pass)
 - [ ] Launcher installed and confirmed as Home, stock launcher disabled afterwards
 - [ ] Animation scales set
 - [ ] JointSpace pairing from PC works; ambilight endpoints answer
