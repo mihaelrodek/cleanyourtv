@@ -84,5 +84,5 @@ org.droidtv.amazonalexa                           # Alexa
 # ---- Batch 4: recommendation rows, only once the new launcher owns Home ----
 # The stock launcher holds a provider reference into tvrecommendations; while it is still enabled and
 # in use, leave these alone (examples/philips-55pus7503). Apply with the stock launcher disabled.
-com.google.android.tvrecommendations              # Android TV recommendations/content rows (NotificationsService running)
-com.google.android.leanbacklauncher.recommendations
+#B# com.google.android.tvrecommendations              # Android TV recommendations/content rows (NotificationsService running)
+#B# com.google.android.leanbacklauncher.recommendations

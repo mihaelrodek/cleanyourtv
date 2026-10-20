@@ -116,7 +116,7 @@ Repo tests (host side, no TV): `python3 -m pytest tests/`.
 - [x] Debloat batches 1–3 applied (27 packages), no crashes/ANR, Home, tuner, HDMI, Play Store, JointSpace alive
 - [ ] Debloat batch 4 (recommendation rows) applied after the new launcher owns Home
 - [x] Launcher built with JDK 17 / SDK 34 (395 KB, unit tests pass)
-- [ ] Launcher installed (2026-10-20) next to MAXtv, which stays Home by choice; TV key (InputKeyService app_keys 170) to verify with the real remote
+- [x] Launcher installed (2026-10-20) next to MAXtv, which stays Home by choice; remote TV key opens it (confirmed with the real remote)
 - [x] Animation scales set to 0.5 (2026-10-20)
 - [x] JointSpace pairing from PC works (tools/jointspace.py); power, mode, currentconfiguration, topology (left 4, right 4, top 0), supportedstyles answer
 - [ ] Ambilight panel in launcher works on the TV
