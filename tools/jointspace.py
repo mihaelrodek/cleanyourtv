@@ -119,7 +119,12 @@ def signature(timestamp, pin):
     return base64.b64encode(hexdigest.encode()).decode()
 
 
-def pair(h):
+def pending_path(h):
+    return cred_path(h).replace(".json", ".pending.json")
+
+
+def pair_request(h):
+    """POST pair/request; the TV shows a PIN. The id, key and timestamp go to a pending file for --pair-grant."""
     alphabet = string.ascii_letters + string.digits
     user = "".join(random.SystemRandom().choice(alphabet) for _ in range(16))
     req = {"scope": ["read", "write", "control"], "device": device_spec(user)}
@@ -127,8 +132,26 @@ def pair(h):
     resp = r.json()
     if resp.get("error_id") != "SUCCESS":
         raise TvError("pair/request failed: {0}".format(resp))
-    password, ts = resp["auth_key"], resp["timestamp"]
-    pin = input("Enter PIN shown on TV: ").strip()
+    p = pending_path(h)
+    os.makedirs(os.path.dirname(p), exist_ok=True)
+    with open(p, "w") as f:
+        json.dump({"user": user, "password": resp["auth_key"], "timestamp": resp["timestamp"],
+                   "timeout": resp.get("timeout")}, f)
+    try:
+        os.chmod(p, 0o600)
+    except OSError:
+        pass
+    print("PIN requested; it is on the TV now (timeout {0} s). Next: --pair-grant <PIN>".format(resp.get("timeout")))
+
+
+def pair_grant(h, pin):
+    p = pending_path(h)
+    if not os.path.exists(p):
+        raise TvError("no pending pairing; run --pair-request first")
+    with open(p) as f:
+        pend = json.load(f)
+    user, password, ts = pend["user"], pend["password"], pend["timestamp"]
+    pin = str(pin).strip()
     grant = {"auth": {"auth_AppId": "1", "pin": pin, "auth_timestamp": ts,
                       "auth_signature": signature(ts, pin)},
              "device": device_spec(user)}
@@ -137,7 +160,13 @@ def pair(h):
     if r.status_code != 200:
         raise TvError("pair/grant failed")
     save_creds(h, user, password)
+    os.remove(p)
     print("paired (user={0}, password={1}) saved to {2}".format(user, mask(password), cred_path(h)))
+
+
+def pair(h):
+    pair_request(h)
+    pair_grant(h, input("Enter PIN shown on TV: "))
 
 
 def ambilight_check(h):
@@ -153,7 +182,9 @@ def ambilight_check(h):
 def main():
     ap = argparse.ArgumentParser(description="JointSpace v6 client")
     g = ap.add_mutually_exclusive_group(required=True)
-    g.add_argument("--pair", action="store_true")
+    g.add_argument("--pair", action="store_true", help="interactive: request, then prompt for the PIN")
+    g.add_argument("--pair-request", action="store_true", help="step 1: make the TV show a PIN")
+    g.add_argument("--pair-grant", metavar="PIN", help="step 2: finish pairing with the PIN")
     g.add_argument("--get", metavar="PATH")
     g.add_argument("--post", nargs=2, metavar=("PATH", "JSON"))
     g.add_argument("--ambilight-check", action="store_true")
@@ -162,6 +193,10 @@ def main():
     try:
         if a.pair:
             pair(h)
+        elif a.pair_request:
+            pair_request(h)
+        elif a.pair_grant:
+            pair_grant(h, a.pair_grant)
         elif a.get:
             r = request("GET", h, a.get, auth=make_auth(h))
             print("HTTP", r.status_code)
