@@ -99,6 +99,16 @@ Repo tests (host side, no TV): `python3 -m pytest tests/`.
 3. To remove the launcher: `pm uninstall com.gathin.tvhome` (it is the only thing ever installed).
 4. Nothing is ever uninstalled from stock, so a factory reset is never required for undo.
 
+## Multiple TVs
+I have three similar Philips TVs. Per-TV profiles live in `tvs/` (see `tvs/README.md`): each has a
+`tv.env` (IP, model, platform, which debloat list and theme, capabilities) and a `notes.md` checklist.
+Shared across all TVs: `launcher/` (one APK, minSdk 26, runs on Android 8 and 12) and `tools/`.
+Per-TV: the `examples/<model>/debloat.txt` list and the `themes/<name>/config.json`.
+- TV 1 `tvs/tv1-dnevni`: 55PUS6412, TPM171E/PH7M_EU_5596, Android 8 (this file's main subject).
+- TV 2 `tvs/tv2-tpm191e`: PH9M_EA_5599, Android 12; fingerprint matches upstream `examples/philips-tpm191e`.
+- TV 3: data expected later.
+Workflow: `source tvs/<tv>/tv.env`, then run the normal commands with `$TV_HOST`, `$TV_DEBLOAT`, `$TV_THEME`.
+
 ## Repo structure
 - `tools/` — ADB-over-TCP client (`tv.py`, adb-shell, no adb binary), `disable.sh/.ps1`, `restore.sh/.ps1`,
   `recovery.py` (state record for undo), `b64push.py` (large file push), `theme.sh/.ps1`, `adb-closed.py`.
