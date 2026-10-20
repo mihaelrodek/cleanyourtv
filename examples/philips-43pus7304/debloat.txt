@@ -1,0 +1,55 @@
+# Philips 43PUS7304/12 (TP Vision TPM191E, device PH9M_EA_5599), Europe, 2019 model
+# Android TV 12 (API 31), firmware TPM191E_R.211.000.103.000, build STT2.230526.001 (2025-12-09).
+# MediaTek MT5887, armeabi-v7a, ~2 GB RAM. os_type MSAF_2019_P. JointSpace API v6.4.0.
+# Fingerprint: Philips/PH9M_EA_5599/PH9M_EA_5599:12/STT2.230526.001/4215:user/release-keys
+#
+# Same platform/board/fingerprint as upstream examples/philips-tpm191e; this list is that one checked
+# against this unit's own `pm list packages` (all of it installed except com.google.android.music).
+# NOT the Android 8 TPM171E platform of examples/philips-55pus6412.
+#
+# Apply:   TV_HOST=<tv ip> tools/disable.sh examples/philips-43pus7304/debloat.txt
+# Undo:    TV_HOST=<tv ip> tools/restore.sh examples/philips-43pus7304/debloat.txt com.google.android.tvlauncher
+# Everything is DISABLED, not uninstalled. Comment out any line you want to keep.
+#
+# Stock launcher: com.google.android.tvlauncher (Home from the factory on this unit, unlike the
+#                 55PUS6412 where MAXtv was Home). Replaced by the launcher/; build-and-install.sh
+#                 disables it once the new Home is running.
+# Live TV app:    org.droidtv.playtv
+#
+# Kept on purpose: org.droidtv.amazonalexa (Alexa power on/off), com.google.android.apps.mediashell
+# (Chromecast), org.droidtv.oad + com.easy.oad (firmware updates), org.droidtv.eum (xtv/sources drawer
+# depend on it on this platform), org.droidtv.nettvbrowser (HbbTV), Play Store/Services, tuner/HDMI/CI,
+# Ambilight/Hue. JointSpace listens on 1925/1926 and Ambilight features are present (used by the launcher panels).
+#
+# com.phorus.playfi.tv is NOT listed: it re-enables itself after a reboot (AudioOutService logs
+# "PlayFi Enabled" at boot). Only com.phorus.playfi.softap is disabled.
+
+# Batch 1: telemetry and retail demo
+org.droidtv.candeebug                     # "DAC" analytics uploader
+org.droidtv.gel                           # metrics collector sharing candeebug's process
+org.droidtv.usagelogger                   # boot stats, remote keypress counts, panel telemetry
+org.droidtv.demome                        # "Demo me" retail demo mode
+com.google.android.feedback               # Market Feedback Agent
+com.google.android.partnersetup           # partner referrer / attribution
+com.google.android.onetimeinitializer     # runs once at first setup, nothing afterwards
+com.google.android.syncadapters.calendar  # Google Calendar sync; no calendar app installed
+
+# Batch 2: Philips promotions
+org.droidtv.nettvrecommender              # "Top Picks" content promotion row
+org.droidtv.recommendation                # its headless backend; listed after the row on purpose
+org.droidtv.nettv.market                  # "Smart TV Collection" app storefront; the Play Store stays
+
+# Batch 3: apps this owner does not use (same choices as the 55PUS6412: assistants and dead Google media off)
+com.google.android.katniss                # Assistant and voice search; the remote's mic button and "Hey Google" stop
+com.amazon.amazonvideo.livingroom         # Prime Video (owner removed it on the other TV too)
+com.google.android.videos                 # Google TV / Play Movies
+com.google.android.youtube.tvmusic        # YouTube Music
+com.google.android.play.games
+org.droidtv.dlna                          # DLNA/UPnP server and renderer
+com.phorus.playfi.softap                  # DTS Play-Fi soft access point
+# com.google.android.marvin.talkback      # TalkBack screen reader: KEPT (accessibility)
+
+# Batch 4: after launcher/build-and-install.sh has moved Home and disabled com.google.android.tvlauncher.
+# The stock launcher holds a provider reference into this package and owns the notification side panel;
+# disabling it before the handover kills the live launcher.
+#B# com.google.android.tvrecommendations      # "Android TV Core Services": recommendation rows, notification panel
