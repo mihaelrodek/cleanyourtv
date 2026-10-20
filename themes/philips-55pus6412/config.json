@@ -1,0 +1,17 @@
+{
+  "dock_apps": ["hr.telekom.android.maxtvp", "com.netflix.ninja", "com.google.android.youtube.tv", "com.disney.disneyplus"],
+  "hidden_apps": ["org.droidtv.playtv", "org.droidtv.eum"],
+  "live_tv_package": "org.droidtv.playtv",
+  "app_keys": ["170:com.gathin.tvhome"],
+  "columns": 4,
+  "rows_below_dock": 0,
+  "reduced_motion": true,
+  "animations": true,
+  "advanced_effects": false,
+  "show_stats": false,
+  "sky_intensity": 0,
+  "module_cards": false,
+  "app_library": false,
+  "background_color": "#000000",
+  "wallpaper": false
+}
