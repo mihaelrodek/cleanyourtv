@@ -120,7 +120,9 @@ Repo tests (host side, no TV): `python3 -m pytest tests/`.
 - [x] Animation scales set to 0.5 (2026-10-20)
 - [x] JointSpace pairing from PC works (tools/jointspace.py); power, mode, currentconfiguration, topology (left 4, right 4, top 0), supportedstyles answer
 - [ ] Ambilight panel in launcher works on the TV
-- [~] Croatian strings: Ambilight panel strings translated (values-hr); full launcher translation still pending
+- [~] Croatian strings: Ambilight panel + Home greetings translated (values-hr); ~80 general strings still pending
+- [x] Quick-launch overlay on the remote "+" key works (after the Android 8.0 translucent-orientation fix)
+- [x] Remote TV key + quick-launch share InputKeyService; a translucent-activity crash can wedge the remote, fixed
 - [ ] Restore script tested end to end (restore, stock state confirmed, re-applied)
 - [ ] Soak test across standby and reboot
 - [ ] USB/Network debugging turned off at the end
