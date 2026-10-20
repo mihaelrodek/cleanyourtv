@@ -84,8 +84,8 @@ org.droidtv.amazonalexa                           # Alexa
 # ---- Batch 4: recommendation rows, only once the new launcher owns Home ----
 # The stock launcher holds a provider reference into tvrecommendations; while it is still enabled and
 # in use, leave these alone (examples/philips-55pus7503). Apply with the stock launcher disabled.
-#B# com.google.android.tvrecommendations              # Android TV recommendations/content rows (NotificationsService running)
-#B# com.google.android.leanbacklauncher.recommendations
+com.google.android.tvrecommendations              # Android TV recommendations/content rows (NotificationsService running)
+com.google.android.leanbacklauncher.recommendations
 
 # ---- Batch 5: optional, user does not use the TV Guide ----
 # org.droidtv.channels is the standalone TV Guide (program grid) app, a leanback tile. It also hosts the
