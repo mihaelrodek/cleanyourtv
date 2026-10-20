@@ -78,7 +78,6 @@
             android:launchMode="singleTop"
             android:excludeFromRecents="true"
             android:noHistory="true"
-            android:screenOrientation="landscape"
             android:theme="@android:style/Theme.Translucent.NoTitleBar.Fullscreen" />
         <!-- Quick launch bar (quick_launch_keycodes); own translucent task so the app behind stays put. -->
         <activity
@@ -88,8 +87,11 @@
             android:launchMode="singleTop"
             android:excludeFromRecents="true"
             android:noHistory="true"
-            android:screenOrientation="landscape"
             android:theme="@android:style/Theme.Translucent.NoTitleBar.Fullscreen" />
+            <!-- No screenOrientation on these two translucent activities: Android 8.0 throws
+                 IllegalStateException "Only fullscreen opaque activities can request orientation",
+                 which crashed the launcher process and took the key-filtering InputKeyService with it,
+                 wedging the remote. The TV is landscape-only, so nothing is lost. -->
         <activity
             android:name=".HomeSettingsActivity"
             android:exported="false"
