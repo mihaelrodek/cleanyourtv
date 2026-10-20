@@ -3,6 +3,7 @@
   "hidden_apps": ["org.droidtv.playtv", "org.droidtv.eum"],
   "live_tv_package": "org.droidtv.playtv",
   "app_keys": ["170:com.gathin.tvhome"],
+  "quick_launch_keycodes": [82],
   "columns": 4,
   "rows_below_dock": 0,
   "reduced_motion": true,

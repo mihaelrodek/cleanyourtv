@@ -1,6 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- Croatian: only the Ambilight pill for now; the rest falls back to English until the full translation. -->
+<!-- Croatian: the greeting, the quick launch bar and the Ambilight pill; the rest falls back to English
+     until the full translation. -->
 <resources>
+    <!-- Home greeting (the launcher uppercases it itself, so normal case here). -->
+    <string name="good_morning">Dobro jutro</string>
+    <string name="good_afternoon">Dobar dan</string>
+    <string name="good_evening">Dobra večer</string>
+    <string name="good_night">Laku noć</string>
+    <!-- Quick launch bar (config quick_launch_keycodes). -->
+    <string name="quick_launch">Brzo pokretanje</string>
     <!-- Ambilight pill (config ambilight_panel). -->
     <string name="ambilight_pair">Upari s televizorom</string>
     <string name="ambilight_pair_again">Ponovno upari</string>

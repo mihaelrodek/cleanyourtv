@@ -40,6 +40,8 @@
     <string name="off">כבוי</string>
     <string name="enable">הפעלה</string>
     <string name="input_key_service_description">פותח את בורר הכניסות בלחיצה על כפתור הכניסות בשלט.</string>
+    <!-- Quick launch bar (config quick_launch_keycodes). -->
+    <string name="quick_launch">הפעלה מהירה</string>
     <string name="home_key_name">כפתור הבית</string>
     <string name="home_key_description">גורם לכפתור הבית בשלט לפתוח את מסך הבית הזה.</string>
     <string name="card_prompt_title">כרטיס חדש מאת %1$s</string>

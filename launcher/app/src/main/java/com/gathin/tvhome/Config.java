@@ -76,6 +76,10 @@ final class Config {
     final int[] inputKeycodes;
     /** Remote buttons that open an app, "keycode:package" or "KEYCODE_NAME:package" (config.xml app_keys). */
     final List<String> appKeys;
+    /** Keycodes that open the quick launch bar in InputKeyService (config.xml quick_launch_keycodes). */
+    final int[] quickLaunchKeycodes;
+    /** Apps the quick launch bar shows, in order; empty falls back to dock_apps (config.xml quick_launch_apps). */
+    final List<String> quickLaunchApps;
     /** The Settings button opens the quick settings panel instead of the TV's Settings (settings_key_panel). */
     final boolean settingsKeyPanel;
     /** Whether themes may show a wallpaper (config.json, wallpaper). */
@@ -100,10 +104,13 @@ final class Config {
                    boolean showHomeSettingsShortcut, boolean showStats, boolean appLibrary, int backgroundColor, int skyIntensity,
                    int[] settingsKeycodes, boolean settingsKeyPanel, boolean wallpaperEnabled, File wallpaper, List<File> wallpapers,
                    int wallpaperRotationMinutes, int wallpaperDim, boolean overlayApplied,
-                   Festival festival, int[] inputKeycodes, List<String> appKeys, boolean ambilightPanel) {
+                   Festival festival, int[] inputKeycodes, List<String> appKeys, boolean ambilightPanel,
+                   int[] quickLaunchKeycodes, List<String> quickLaunchApps) {
         this.ambilightPanel = ambilightPanel;
         this.inputKeycodes = inputKeycodes;
         this.appKeys = Collections.unmodifiableList(appKeys);
+        this.quickLaunchKeycodes = quickLaunchKeycodes;
+        this.quickLaunchApps = Collections.unmodifiableList(quickLaunchApps);
         this.dockApps = Collections.unmodifiableList(dockApps);
         this.fillDock = fillDock;
         this.hiddenApps = Collections.unmodifiableList(hiddenApps);
@@ -177,6 +184,8 @@ final class Config {
         int[] inputKeycodes = res.getIntArray(R.array.input_key_keycodes);
         List<String> appKeys = new ArrayList<>(Arrays.asList(res.getStringArray(R.array.app_keys)));
         boolean ambilightPanel = res.getBoolean(R.bool.ambilight_panel);
+        int[] quickLaunchKeycodes = res.getIntArray(R.array.quick_launch_keycodes);
+        List<String> quickLaunchApps = new ArrayList<>(Arrays.asList(res.getStringArray(R.array.quick_launch_apps)));
         boolean applied = false;
 
         File dir = dir(ctx);
@@ -214,6 +223,8 @@ final class Config {
             inputKeycodes = intArray(json, "input_key_keycodes", inputKeycodes);
             appKeys = stringList(json, "app_keys", appKeys);
             ambilightPanel = bool(json, "ambilight_panel", ambilightPanel);
+            quickLaunchKeycodes = intArray(json, "quick_launch_keycodes", quickLaunchKeycodes);
+            quickLaunchApps = stringList(json, "quick_launch_apps", quickLaunchApps);
         }
         // A theme push or reset invalidates choices made on the TV. On first use, remember the
         // current theme without clearing choices from an older launcher version.
@@ -244,7 +255,7 @@ final class Config {
                 shamsi, greetingName, moduleCards, reducedMotion, dockTitle, dockRow, reorderButton, vpn, homeSettings, showStats, library, background,
                 Math.max(0, Math.min(100, skyIntensity)), settingsKeycodes, settingsKeyPanel, wallpaperEnabled, wallpaper,
                 wallpapers, rotationMinutes, wallpaperDim, applied,
-                festival, inputKeycodes, appKeys, ambilightPanel);
+                festival, inputKeycodes, appKeys, ambilightPanel, quickLaunchKeycodes, quickLaunchApps);
     }
 
     private static void syncThemeChoices(SharedPreferences choices, File dir, File config) {

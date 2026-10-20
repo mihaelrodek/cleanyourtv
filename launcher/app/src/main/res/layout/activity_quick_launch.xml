@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Quick launch bar: a translucent glass panel docked at the bottom centre, over whatever app is
+     playing. QuickLaunchActivity fills #tiles with up to 4 app tiles and shows the focused app's name
+     in #name. The panel slides up unless reduced motion is on. -->
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/scrim"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:clipChildren="false">
+
+    <LinearLayout
+        android:id="@+id/panel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|center_horizontal"
+        android:layout_marginBottom="40dp"
+        android:orientation="vertical"
+        android:gravity="center_horizontal"
+        android:background="@drawable/glass_panel"
+        android:padding="16dp"
+        android:elevation="12dp"
+        android:contentDescription="@string/quick_launch"
+        android:clipChildren="false">
+
+        <LinearLayout
+            android:id="@+id/tiles"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center"
+            android:clipChildren="false" />
+
+        <TextView
+            android:id="@+id/name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:minHeight="20dp"
+            android:gravity="center"
+            android:singleLine="true"
+            android:ellipsize="end"
+            android:textColor="#F2FFFFFF"
+            android:textSize="14sp"
+            android:fontFamily="@font/outfit_medium"
+            android:letterSpacing="0.02" />
+    </LinearLayout>
+</FrameLayout>

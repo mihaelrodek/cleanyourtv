@@ -62,6 +62,8 @@ is ignored, and a file that doesn't parse is ignored as a whole, so a theme can 
 | `settings_key_panel` | bool | Those buttons open a small quick settings panel (TV settings, Display, Network, Apps, Launcher settings) instead of the TV's Settings |
 | `input_key_keycodes` | list of keycodes | More remote buttons that open the input switcher, for `InputKeyService` (`KEYCODE_TV` and `KEYCODE_TV_INPUT` always do) |
 | `app_keys` | list of strings | Remote buttons that open an app, as `"190:com.google.android.youtube.tv"` or `"KEYCODE_BUTTON_3:com.google.android.youtube.tv"`, for `InputKeyService` or `HomeKeyService` |
+| `quick_launch_keycodes` | list of keycodes | Remote buttons that open the quick launch bar from any app, for `InputKeyService` (the Philips OPTIONS button is `[82]`, `KEYCODE_MENU`). Consuming a key means its normal action no longer fires in other apps |
+| `quick_launch_apps` | list of package names | Apps shown in the quick launch bar, in order, installed apps only, capped at 4; empty falls back to `dock_apps` |
 
 ## Wallpapers
 

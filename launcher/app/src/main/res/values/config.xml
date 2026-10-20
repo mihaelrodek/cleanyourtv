@@ -77,6 +77,18 @@
     <string-array name="app_keys" translatable="false">
     </string-array>
 
+    <!-- Quick launch: remote buttons that open a small translucent app-switcher bar from any app
+         (InputKeyService). The Philips "+"/OPTIONS button is KEYCODE_MENU, keycode 82. Read like
+         input_key_keycodes, and a theme's config.json can set it too ("quick_launch_keycodes": [82]).
+         Consuming a key here means its normal action (the OPTIONS menu) no longer fires in other apps.
+         Check with the real remote: keys injected over ADB never reach the service. Leave empty to omit. -->
+    <integer-array name="quick_launch_keycodes">
+    </integer-array>
+    <!-- Apps shown in the quick launch bar, in order, installed apps only, capped at 4. Empty falls back to
+         dock_apps. Also settable in a theme's config.json ("quick_launch_apps": [...]). -->
+    <string-array name="quick_launch_apps" translatable="false">
+    </string-array>
+
     <!-- Show the Solar Hijri (Shamsi) date used in Iran and Afghanistan, e.g. "27 Mehr 1405", above the
          Gregorian date. -->
     <bool name="shamsi_date">false</bool>
