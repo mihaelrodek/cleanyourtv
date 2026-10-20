@@ -109,56 +109,45 @@
                         android:letterSpacing="0.08"
                         android:textAllCaps="true" />
 
-                    <View
-                        android:layout_width="1dp"
-                        android:layout_height="26dp"
-                        android:layout_gravity="bottom"
-                        android:layout_marginStart="16dp"
-                        android:layout_marginEnd="16dp"
-                        android:layout_marginBottom="8dp"
-                        android:background="#33FFFFFF" />
-
-                    <LinearLayout
-                        android:layout_width="0dp"
-                        android:layout_weight="1"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="bottom"
-                        android:layout_marginBottom="9dp"
-                        android:orientation="vertical">
-
-                        <!-- Shamsi date ("27 Mehr 1405"), shown when shamsi_date is on. -->
-                        <TextView
-                            android:id="@+id/shamsiDate"
-                            android:gravity="left"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:singleLine="true"
-                            android:ellipsize="end"
-                            android:textColor="#E6FFFFFF"
-                            android:textSize="17sp"
-                            android:fontFamily="@font/outfit_regular"
-                            android:letterSpacing="0.02"
-                            android:includeFontPadding="false"
-                            android:visibility="gone" />
-
-                        <TextClock
-                            android:id="@+id/date"
-                            android:gravity="left"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:singleLine="@bool/date_single_line"
-                            android:maxLines="2"
-                            android:lineSpacingExtra="6dp"
-                            android:ellipsize="end"
-                            android:format12Hour="@string/date_format_home"
-                            android:format24Hour="@string/date_format_home"
-                            android:textColor="#A6FFFFFF"
-                            android:textSize="14sp"
-                            android:fontFamily="@font/outfit_regular"
-                            android:letterSpacing="0.14"
-                            android:textAllCaps="true" />
-                    </LinearLayout>
                 </LinearLayout>
+
+                <!-- Date on its own line under the clock, full width of the left block, so the long
+                     Croatian month is not squeezed by the four-pill top bar (was beside the clock). -->
+                <!-- Shamsi date ("27 Mehr 1405"), shown when shamsi_date is on. -->
+                <TextView
+                    android:id="@+id/shamsiDate"
+                    android:gravity="left"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="4dp"
+                    android:layout_marginTop="6dp"
+                    android:singleLine="true"
+                    android:ellipsize="end"
+                    android:textColor="#E6FFFFFF"
+                    android:textSize="17sp"
+                    android:fontFamily="@font/outfit_regular"
+                    android:letterSpacing="0.02"
+                    android:includeFontPadding="false"
+                    android:visibility="gone" />
+
+                <TextClock
+                    android:id="@+id/date"
+                    android:gravity="left"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="4dp"
+                    android:layout_marginTop="6dp"
+                    android:singleLine="@bool/date_single_line"
+                    android:maxLines="2"
+                    android:lineSpacingExtra="4dp"
+                    android:ellipsize="end"
+                    android:format12Hour="@string/date_format_home"
+                    android:format24Hour="@string/date_format_home"
+                    android:textColor="#A6FFFFFF"
+                    android:textSize="14sp"
+                    android:fontFamily="@font/outfit_regular"
+                    android:letterSpacing="0.14"
+                    android:textAllCaps="true" />
 
             </LinearLayout>
 
