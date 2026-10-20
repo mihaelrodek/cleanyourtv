@@ -1,0 +1,88 @@
+# Philips 55PUS6412/12 (TP Vision TPM171E, device PH7M_EU_5596), Europe, 2017 model, 3-sided Ambilight
+# Android TV 8.0.0 (API 26), firmware TPM171E_R.107.001.143.000 (final release for this platform),
+# security patch 2021-01-05. MediaTek MT5891, armeabi-v7a, 1.9 GB RAM, 1920x1080 UI.
+# Fingerprint: Philips/PH7M_EU_5596/PH7M_EU_5596:8.0.0/OC/4718:user/release-keys
+#
+# Same platform, device and firmware as examples/philips-55pus7503 and examples/philips-65pus8102.
+# This list is the 65PUS8102 one checked against `pm list packages -f` on this set: 10 of its entries are
+# not installed here (Gameloft, TED and eight NetTV web apps) and three NetTV web apps are only here.
+# App labels were read from the APKs with `aapt dump badging`, not guessed from the package name.
+# Of 156 packages, 0 were disabled from the factory.
+#
+# Apply:   TV_HOST=<tv ip> tools/disable.sh examples/philips-55pus6412/debloat.txt
+# Undo:    TV_HOST=<tv ip> tools/restore.sh examples/philips-55pus6412/debloat.txt com.google.android.tvlauncher
+# Everything is DISABLED, not uninstalled. Comment out any line you want to keep.
+#
+# Stock launcher: com.google.android.tvlauncher (not in this list). On this set Home belonged to the
+#                 MAXtv IPTV app (hr.telekom.android.maxtvp) when the list was made, so
+#                 build-and-install.sh needs STOCK_LAUNCHER=com.google.android.tvlauncher passed by hand.
+# Live TV app:    org.droidtv.playtv
+# Launcher config: set live_tv_package to org.droidtv.playtv and add it to hidden_apps.
+#
+# ADB: USB debugging opens TCP 5555, but the "Allow USB debugging?" dialog never reached the screen
+# while a third-party launcher owned Home, even after revoking authorisations and toggling debugging.
+# It appeared only after a power cycle at the mains (not standby): connect within ~30 s of port 5555
+# opening after boot and accept it on the TV.
+#
+# Kept on purpose, do NOT disable:
+#   org.droidtv.playtv, org.droidtv.xtv, org.droidtv.GlobalKey, org.droidtv.settings, org.droidtv.tvsystemui,
+#   org.droidtv.channels, org.droidtv.epgdata, org.droidtv.ci, org.droidtv.teletext, org.droidtv.euinstaller*,
+#   com.mediatek.tvinput, com.mediatek.tunerservice, mtktvapi.*: tuner, sources, channels, remote.
+#   org.droidtv.alhuewizard, org.droidtv.ambihuecommon: Ambilight + Hue. Ambilight itself lives in the
+#   TV engine (dtv_svc) and in org.droidtv.settings, so nothing in this list touches it.
+#   org.droidtv.nettvbrowser: HbbTV handler and the Opera engine process (red button on broadcast channels).
+#   org.droidtv.eum: user manual; hide it in the launcher instead (disabling it hung the Android 11 Philips).
+#   org.droidtv.icp: Philips cloud sign-on used by the NetTV registration below; harmless once those are off,
+#   and never exercised disabled on this firmware, so it stays.
+#   org.droidtv.contentexplorer: "Media" USB/DLNA browser. org.droidtv.dlna: DLNA renderer.
+#   org.droidtv.oad, com.easy.oad (RC FW Update): firmware and remote-control updates.
+#   org.droidtv.leanbackcustomizer, com.google.android.tungsten.setupwraith: launcher customiser and setup
+#   wizard; setupwraith owns the Wi-Fi network saved in the first-run wizard.
+#   com.google.android.apps.mediashell (Chromecast), Play Store, Play Services, com.google.android.tts,
+#   com.google.android.tv.remote.service (phone remote app), every streaming app.
+#
+# Not removable: /vendor/bin/inscape_fp (ACR fingerprinting daemon) is an init service. With the client
+# below disabled and persist.sys.droidtv.ACR_Enable=0 (ACR terms never accepted on this set) it collects nothing.
+#
+# Applied in four batches with a screenshot and a check of Home, Ambilight follow-video, Play Store,
+# HDMI inputs and TV channels after each. Verification notes are kept in the fork's CLAUDE.md checklist.
+
+# ---- Batch 1: Google feedback and tutorials, Philips promotion and telemetry ----
+com.google.android.feedback                       # Market Feedback Agent
+com.google.android.tvtutorials                    # Android TV first-run tutorials
+org.droidtv.demome                                # Retail/store demonstration app (DemoMeVideoSyncService was running)
+org.droidtv.nettvrecommender                      # Philips NetTV / Top Picks recommendation row (service running)
+org.droidtv.usagelogger                           # Boot stats, remote keypress counts, panel telemetry (service running)
+org.droidtv.candeebug                             # "DAC" analytics uploader: CollectionService, UploadService, Gateway were running
+org.droidtv.gel                                   # "GEL" metrics collector, runs inside the candeebug process; disable both
+tv.inscape.tvclient.inscapeacr                    # "Inscape" ACR client: identifies what is on screen, HDMI included
+org.droidtv.sticker                               # "Sticker": retail e-sticker/banner sync (EstickerAutomatorService, EBannerSyncService running)
+org.droidtv.twittershare                          # Twitter share for screenshots/programmes; the API it used is gone
+
+# ---- Batch 2: Philips NetTV app store and its preinstalled web apps (Play Store replaces it) ----
+org.droidtv.nettv.market                          # NetTV app gallery
+org.droidtv.nettvapps                             # "NetTvApps" manager
+org.droidtv.nettv_launcherapp                     # NetTV app launcher entry
+org.droidtv.nettvregistration                     # Philips account registration for NetTV
+org.droidtv.nettvapp1984                          # Dailymotion
+org.droidtv.nettvapp3814                          # TV5Monde
+org.droidtv.nettvapp4546                          # MEGOGO — TV and Movies
+org.droidtv.nettvapp4768                          # France24
+org.droidtv.nettvapp4771                          # Divan.TV
+org.droidtv.nettvapp4836                          # Social TV
+org.droidtv.nettvapp5225                          # Filmbox Live
+org.droidtv.nettvapp5326                          # Toon Goggles
+
+# ---- Batch 3: Google extras and voice assistants, off by choice ----
+# The remote's microphone button does nothing after katniss is disabled.
+com.google.android.music                          # Google Play Music (service discontinued)
+com.google.android.videos                         # Google Play Movies & TV (also registers a TvInputService)
+com.opera.sdk.example                             # Opera TV SDK sample app (leanback entry, no use)
+com.google.android.katniss                        # Google Assistant / voice search (5 services were running)
+org.droidtv.amazonalexa                           # Alexa
+
+# ---- Batch 4: recommendation rows, only once the new launcher owns Home ----
+# The stock launcher holds a provider reference into tvrecommendations; while it is still enabled and
+# in use, leave these alone (examples/philips-55pus7503). Apply with the stock launcher disabled.
+com.google.android.tvrecommendations              # Android TV recommendations/content rows (NotificationsService running)
+com.google.android.leanbacklauncher.recommendations

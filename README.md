@@ -2,12 +2,12 @@
   <a href="https://cleanyour.tv"><img src="https://raw.githubusercontent.com/Gathin23/cleanyourtv/main/docs/banner.png" alt="CleanYourTV. Your TV, minus the ads." width="800"></a>
 </p>
 
-<h3 align="center">107 TV models &nbsp;·&nbsp; 37 brands &nbsp;·&nbsp; 18 languages &nbsp;·&nbsp; 390 KB launcher</h3>
+<h3 align="center">108 TV models &nbsp;·&nbsp; 37 brands &nbsp;·&nbsp; 18 languages &nbsp;·&nbsp; 390 KB launcher</h3>
 
 <p align="center">
   <a href="https://cleanyour.tv">cleanyour.tv</a> ·
   <a href="PROMPT.md">The prompt</a> ·
-  <a href="examples/">107 TV lists</a> ·
+  <a href="examples/">108 TV lists</a> ·
   <a href="SHOWCASE.md">22 built on it</a> ·
   <a href="https://x.com/gathint/status/2111379569030939102">The tweet</a> ·
   <a href="README.zh-CN.md">简体中文</a>
@@ -117,7 +117,7 @@ install any launcher at all; their lists say so in the header.
 
 Tested lists from contributors, one folder per model in [`examples/`](examples/):
 
-**TCL** 20 · **Sony** 17 · **Xiaomi** 15 · **Philips** 7 · **Hisense** 6 · **Panasonic** 3 ·
+**TCL** 20 · **Sony** 17 · **Xiaomi** 15 · **Philips** 8 · **Hisense** 6 · **Panasonic** 3 ·
 **Amazon Fire TV Stick** 2 · **BenQ** 2 · **CHiQ** 2 · **Haier** 2 · **Hitachi** 2 · **NVIDIA Shield** 2 ·
 **Skyworth** 2 · **Vu** 2 · AiPro2K · AIWA · Chromecast with Google TV · FFalcon · Freebox · Insignia Fire TV ·
 Kalley · MTC · OnePlus · onn · PRISM+ · RCA · Redmi · SANYO · Thomson · Toshiba Fire TV · Vidda ·
@@ -163,6 +163,7 @@ BYINTEK, JMGO, Portronics, Stellamore, Wanbo and XGIMI projectors
 | Panasonic TH-40HS550K (Skyworth-built, GS655 shibuya, MediaTek) | Android TV 11 |
 | Philips 50PUS8517/12 (TP Vision, PH1M_EA_9970A, MediaTek MT5895), Europe | Android TV 11 |
 | Philips 55OLED707/12 (TP Vision, PH1M_EA_9970A, MediaTek MT5895), UK | Android TV 11 |
+| Philips 55PUS6412/12 (TP Vision TPM171E, PH7M_EU_5596, MediaTek MT5891, 3-sided Ambilight), Europe | Android TV 8.0 |
 | Philips 55PUS7503/12 (TP Vision TPM171E, PH7M_EU_5596, MediaTek MT5891), Europe | Android TV 8.0 |
 | Philips 65PUS8102/12 (TP Vision TPM171E, PH7M_EU_5596, MediaTek MT5891), Europe | Android TV 8.0 |
 | Philips R8G Google TV (MOKA, whitefield, Realtek RTD2851F), US | Google TV 14 |
