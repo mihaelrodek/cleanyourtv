@@ -100,6 +100,9 @@ final class Config {
     final boolean tvPanel;
     /** Network pill opens a read-only connection info panel instead of jumping to Wi-Fi settings (config.xml network_panel). */
     final boolean networkPanel;
+    /** JointSpace picture-style settings node id; differs by platform, so a theme can override it
+     *  (config.xml picture_style_node). Set in {@link #load}, not via the constructor. */
+    int pictureStyleNode;
 
     private Config(List<String> dockApps, boolean fillDock, List<String> hiddenApps, String liveTvPackage,
                    String liveTvAction, String sourcePanelService, String sourcePanelAction, String inputAction,
@@ -192,6 +195,7 @@ final class Config {
         boolean ambilightPanel = res.getBoolean(R.bool.ambilight_panel);
         boolean tvPanel = res.getBoolean(R.bool.tv_panel);
         boolean networkPanel = res.getBoolean(R.bool.network_panel);
+        int pictureStyleNode = res.getInteger(R.integer.picture_style_node);
         int[] quickLaunchKeycodes = res.getIntArray(R.array.quick_launch_keycodes);
         List<String> quickLaunchApps = new ArrayList<>(Arrays.asList(res.getStringArray(R.array.quick_launch_apps)));
         boolean applied = false;
@@ -233,6 +237,7 @@ final class Config {
             ambilightPanel = bool(json, "ambilight_panel", ambilightPanel);
             tvPanel = bool(json, "tv_panel", tvPanel);
             networkPanel = bool(json, "network_panel", networkPanel);
+            pictureStyleNode = integer(json, "picture_style_node", pictureStyleNode, 1, Integer.MAX_VALUE);
             quickLaunchKeycodes = intArray(json, "quick_launch_keycodes", quickLaunchKeycodes);
             quickLaunchApps = stringList(json, "quick_launch_apps", quickLaunchApps);
         }
@@ -260,12 +265,14 @@ final class Config {
         Festival festival = json == null ? Festival.NONE : Festival.parse(string(json, "festival", ""),
                 string(json, "festival_until", ""), string(json, "greeting", ""), string(json, "accent_color", ""));
 
-        return new Config(dock, fillDock, hidden, liveTv, liveTvAction, panelService, panelAction, inputAction,
+        Config cfg = new Config(dock, fillDock, hidden, liveTv, liveTvAction, panelService, panelAction, inputAction,
                 Math.max(1, columns), Math.max(0, rowsBelow), animations, advancedEffects,
                 shamsi, greetingName, moduleCards, reducedMotion, dockTitle, dockRow, reorderButton, vpn, homeSettings, showStats, library, background,
                 Math.max(0, Math.min(100, skyIntensity)), settingsKeycodes, settingsKeyPanel, wallpaperEnabled, wallpaper,
                 wallpapers, rotationMinutes, wallpaperDim, applied,
                 festival, inputKeycodes, appKeys, ambilightPanel, tvPanel, networkPanel, quickLaunchKeycodes, quickLaunchApps);
+        cfg.pictureStyleNode = pictureStyleNode;
+        return cfg;
     }
 
     private static void syncThemeChoices(SharedPreferences choices, File dir, File config) {

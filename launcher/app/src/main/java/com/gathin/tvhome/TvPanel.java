@@ -39,8 +39,6 @@ final class TvPanel {
     private static final Handler MAIN = new Handler(Looper.getMainLooper());
     private static final long DEBOUNCE_MS = 250;
     private static final int VOLUME_STEP = 2;
-    /** Picture style in the TV's settings tree (menuitems/settings). */
-    private static final long PICTURE_NODE = 2131230838L;
 
     private static final int SCREEN_MESSAGE = 0, SCREEN_MAIN = 1, SCREEN_PICTURE = 2;
 
@@ -78,6 +76,8 @@ final class TvPanel {
     private final MainActivity activity;
     private final JointSpaceStore store;
     private final float density;
+    /** JointSpace picture-style node id for this TV (from the theme; differs by platform). */
+    private final int pictureNode;
     private PopupWindow popup;
     private LinearLayout rows;
     private TextView status;
@@ -92,6 +92,7 @@ final class TvPanel {
         this.activity = activity;
         this.store = new JointSpaceStore(activity);
         this.density = activity.getResources().getDisplayMetrics().density;
+        this.pictureNode = Config.load(activity).pictureStyleNode;
     }
 
     void show(View anchor) {
@@ -181,7 +182,7 @@ final class TvPanel {
 
     private void setPicture(int enumId) {
         write(c -> {
-            JSONObject value = new JSONObject().put("Nodeid", PICTURE_NODE).put("Controllable", true)
+            JSONObject value = new JSONObject().put("Nodeid", pictureNode).put("Controllable", true)
                     .put("Available", true).put("data", new JSONObject().put("selected_item", enumId));
             c.post("menuitems/settings/update", new JSONObject()
                     .put("values", new JSONArray().put(new JSONObject().put("value", value))));
@@ -194,7 +195,7 @@ final class TvPanel {
         run(() -> {
             JointSpaceClient c = client();
             w.apply(c);
-            return readState(c);
+            return readState(c, pictureNode);
         }, s -> {
             state = s;
             if (!volumePending) volume = s.volCurrent;
@@ -207,7 +208,7 @@ final class TvPanel {
     }
 
     private void refresh() {
-        run(() -> readState(client()), s -> {
+        run(() -> readState(client(), pictureNode), s -> {
             state = s;
             volume = s.volCurrent;
             if (screen == SCREEN_MAIN) showMain(focusedIndex());
@@ -219,11 +220,11 @@ final class TvPanel {
         return new JointSpaceClient(store.deviceId(), store.authKey(), store.certSha256());
     }
 
-    private static State readState(JointSpaceClient c) throws IOException {
+    private static State readState(JointSpaceClient c, int node) throws IOException {
         State s = new State();
         try {
             JSONObject req = new JSONObject().put("nodes",
-                    new JSONArray().put(new JSONObject().put("nodeid", PICTURE_NODE)));
+                    new JSONArray().put(new JSONObject().put("nodeid", node)));
             JSONArray values = c.post("menuitems/settings/current", req).optJSONArray("values");
             JSONObject first = values == null ? null : values.optJSONObject(0);
             JSONObject value = first == null ? null : first.optJSONObject("value");
@@ -341,6 +342,10 @@ final class TvPanel {
             case "HDR_GAME": return R.string.tv_pic_hdr_game;
             case "ISF_DAY": return R.string.tv_pic_isf_day;
             case "ISF_NIGHT": return R.string.tv_pic_isf_night;
+            case "AI": return R.string.tv_pic_ai;
+            case "HDR_AI": return R.string.tv_pic_hdr_ai;
+            case "HDR_DOLBY_VISION_BRIGHT": return R.string.tv_pic_dv_bright;
+            case "HDR_DOLBY_VISION_DARK": return R.string.tv_pic_dv_dark;
             default: return 0;
         }
     }

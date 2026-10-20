@@ -36,6 +36,7 @@ final class TvControl {
         int dot = s.lastIndexOf('.');
         if (dot >= 0 && dot < s.length() - 1) s = s.substring(dot + 1);
         s = s.toUpperCase(Locale.ROOT);
-        return s.startsWith("MAIN_") ? s.substring(5) : s;
+        // Picture-mode ids come as MAIN_* or MISC_* (e.g. MISC_AI on the TPM191E); both prefixes are 5 chars.
+        return (s.startsWith("MAIN_") || s.startsWith("MISC_")) ? s.substring(5) : s;
     }
 }

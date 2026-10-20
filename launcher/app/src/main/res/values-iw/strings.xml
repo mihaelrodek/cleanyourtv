@@ -157,6 +157,10 @@
     <string name="tv_pic_hdr_game">HDR משחק</string>
     <string name="tv_pic_isf_day">ISF יום</string>
     <string name="tv_pic_isf_night">ISF לילה</string>
+    <string name="tv_pic_ai">AI</string>
+    <string name="tv_pic_hdr_ai">HDR AI</string>
+    <string name="tv_pic_dv_bright">Dolby Vision Bright</string>
+    <string name="tv_pic_dv_dark">Dolby Vision Dark</string>
 
     <!-- Network pill panel (config network_panel): read-only connection info. -->
     <string name="network_title">רשת</string>

@@ -154,6 +154,13 @@
          panel sets up (pair there first). Off by default; a theme can set "tv_panel": true. -->
     <bool name="tv_panel">false</bool>
 
+    <!-- JointSpace settings node id for the picture style, used by the TV pill's picture-mode list. It
+         differs by platform: 2131230838 on the TPM171E (Android 8, e.g. 55PUS6412), 2130968787 on the
+         TPM191E (Android 12, e.g. 43PUS7304). Read it on a new TV with tools/jointspace.py
+         (get menuitems/settings/structure, find context "picture_style"), then a theme sets
+         "picture_style_node". -->
+    <integer name="picture_style_node">2131230838</integer>
+
     <!-- Network pill behaviour. false (the default): the pill opens the TV's Wi-Fi settings (or the VPN app,
          see vpn_app). true: it opens a read-only glass panel with the current connection (SSID or Ethernet,
          signal, link speed, band, IP and gateway) and a "Change network" row to the Wi-Fi settings. The pill
