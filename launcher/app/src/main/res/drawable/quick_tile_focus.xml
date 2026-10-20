@@ -1,25 +1,37 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- Cheap focus highlight for a quick-launch tile: a white ring drawn as the tile's foreground when
-     focused, so moving the highlight does not re-composite the banner bitmap (scaling did, which was
-     slow on the MT5891). Transparent otherwise. -->
+<!-- Focus highlight for a quick-launch tile, drawn as the card's foreground. Two rings so it shows on
+     any banner: a dark outer ring for light banners (Netflix, YouTube) and a white inner ring for dark
+     ones (MAXtv, Disney+). A plain white ring vanished on the light banners. Transparent when unfocused. -->
 <selector xmlns:android="http://schemas.android.com/apk/res/android">
-    <item android:state_focused="true">
-        <shape android:shape="rectangle">
+    <item android:state_focused="true"><layer-list>
+        <item><shape android:shape="rectangle">
             <corners android:radius="16dp" />
-            <stroke android:width="3dp" android:color="#FFFFFFFF" />
+            <stroke android:width="3dp" android:color="#CC000000" />
             <solid android:color="@android:color/transparent" />
-        </shape>
-    </item>
-    <item android:state_selected="true">
-        <shape android:shape="rectangle">
+        </shape></item>
+        <item android:left="2dp" android:top="2dp" android:right="2dp" android:bottom="2dp">
+            <shape android:shape="rectangle">
+                <corners android:radius="14dp" />
+                <stroke android:width="2dp" android:color="#FFFFFFFF" />
+                <solid android:color="@android:color/transparent" />
+            </shape>
+        </item>
+    </layer-list></item>
+    <item android:state_selected="true"><layer-list>
+        <item><shape android:shape="rectangle">
             <corners android:radius="16dp" />
-            <stroke android:width="3dp" android:color="#FFFFFFFF" />
+            <stroke android:width="3dp" android:color="#CC000000" />
             <solid android:color="@android:color/transparent" />
-        </shape>
-    </item>
-    <item>
-        <shape android:shape="rectangle">
-            <solid android:color="@android:color/transparent" />
-        </shape>
-    </item>
+        </shape></item>
+        <item android:left="2dp" android:top="2dp" android:right="2dp" android:bottom="2dp">
+            <shape android:shape="rectangle">
+                <corners android:radius="14dp" />
+                <stroke android:width="2dp" android:color="#FFFFFFFF" />
+                <solid android:color="@android:color/transparent" />
+            </shape>
+        </item>
+    </layer-list></item>
+    <item><shape android:shape="rectangle">
+        <solid android:color="@android:color/transparent" />
+    </shape></item>
 </selector>

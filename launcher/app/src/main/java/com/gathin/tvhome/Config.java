@@ -98,6 +98,8 @@ final class Config {
     final boolean ambilightPanel;
     /** TV pill in the top bar (volume, mute, picture mode), for Philips TVs with the JointSpace API (config.xml tv_panel). */
     final boolean tvPanel;
+    /** Network pill opens a read-only connection info panel instead of jumping to Wi-Fi settings (config.xml network_panel). */
+    final boolean networkPanel;
 
     private Config(List<String> dockApps, boolean fillDock, List<String> hiddenApps, String liveTvPackage,
                    String liveTvAction, String sourcePanelService, String sourcePanelAction, String inputAction,
@@ -107,9 +109,10 @@ final class Config {
                    int[] settingsKeycodes, boolean settingsKeyPanel, boolean wallpaperEnabled, File wallpaper, List<File> wallpapers,
                    int wallpaperRotationMinutes, int wallpaperDim, boolean overlayApplied,
                    Festival festival, int[] inputKeycodes, List<String> appKeys, boolean ambilightPanel,
-                   boolean tvPanel, int[] quickLaunchKeycodes, List<String> quickLaunchApps) {
+                   boolean tvPanel, boolean networkPanel, int[] quickLaunchKeycodes, List<String> quickLaunchApps) {
         this.ambilightPanel = ambilightPanel;
         this.tvPanel = tvPanel;
+        this.networkPanel = networkPanel;
         this.inputKeycodes = inputKeycodes;
         this.appKeys = Collections.unmodifiableList(appKeys);
         this.quickLaunchKeycodes = quickLaunchKeycodes;
@@ -188,6 +191,7 @@ final class Config {
         List<String> appKeys = new ArrayList<>(Arrays.asList(res.getStringArray(R.array.app_keys)));
         boolean ambilightPanel = res.getBoolean(R.bool.ambilight_panel);
         boolean tvPanel = res.getBoolean(R.bool.tv_panel);
+        boolean networkPanel = res.getBoolean(R.bool.network_panel);
         int[] quickLaunchKeycodes = res.getIntArray(R.array.quick_launch_keycodes);
         List<String> quickLaunchApps = new ArrayList<>(Arrays.asList(res.getStringArray(R.array.quick_launch_apps)));
         boolean applied = false;
@@ -228,6 +232,7 @@ final class Config {
             appKeys = stringList(json, "app_keys", appKeys);
             ambilightPanel = bool(json, "ambilight_panel", ambilightPanel);
             tvPanel = bool(json, "tv_panel", tvPanel);
+            networkPanel = bool(json, "network_panel", networkPanel);
             quickLaunchKeycodes = intArray(json, "quick_launch_keycodes", quickLaunchKeycodes);
             quickLaunchApps = stringList(json, "quick_launch_apps", quickLaunchApps);
         }
@@ -260,7 +265,7 @@ final class Config {
                 shamsi, greetingName, moduleCards, reducedMotion, dockTitle, dockRow, reorderButton, vpn, homeSettings, showStats, library, background,
                 Math.max(0, Math.min(100, skyIntensity)), settingsKeycodes, settingsKeyPanel, wallpaperEnabled, wallpaper,
                 wallpapers, rotationMinutes, wallpaperDim, applied,
-                festival, inputKeycodes, appKeys, ambilightPanel, tvPanel, quickLaunchKeycodes, quickLaunchApps);
+                festival, inputKeycodes, appKeys, ambilightPanel, tvPanel, networkPanel, quickLaunchKeycodes, quickLaunchApps);
     }
 
     private static void syncThemeChoices(SharedPreferences choices, File dir, File config) {

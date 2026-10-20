@@ -21,6 +21,7 @@
   "show_stats": false,
   "ambilight_panel": true,
   "tv_panel": true,
+  "network_panel": true,
   "sky_intensity": 0,
   "module_cards": false,
   "app_library": false,

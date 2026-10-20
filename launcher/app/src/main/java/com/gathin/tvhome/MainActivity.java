@@ -116,6 +116,7 @@ public class MainActivity extends Activity implements AppAdapter.TileListener {
     /** TV pill (config tv_panel, Philips TVs); its dropdown is built on first use. */
     private View btnTv;
     private TvPanel tvPanel;
+    private NetworkPanel networkPanel;
     private TextView btnWifi;
     private TextView shamsiDate;
     private TextView stats;
@@ -446,7 +447,14 @@ public class MainActivity extends Activity implements AppAdapter.TileListener {
         });
         View btnSettings = findViewById(R.id.btnSettings);
         btnInputs.setOnClickListener(v -> showInputs());
-        btnWifi.setOnClickListener(v -> openNetworkPill());
+        btnWifi.setOnClickListener(v -> {
+            if (cfg.networkPanel) {
+                if (networkPanel == null) networkPanel = new NetworkPanel(this);
+                networkPanel.show(v);
+            } else {
+                openNetworkPill();
+            }
+        });
         btnWifi.setOnLongClickListener(v -> {
             open(systemIntent(Settings.ACTION_WIFI_SETTINGS));
             return true;

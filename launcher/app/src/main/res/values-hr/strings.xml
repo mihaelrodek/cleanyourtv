@@ -76,4 +76,15 @@
     <string name="tv_pic_hdr_game">HDR igra</string>
     <string name="tv_pic_isf_day">ISF dan</string>
     <string name="tv_pic_isf_night">ISF noć</string>
+
+    <!-- Network pill panel (config network_panel): read-only connection info. -->
+    <string name="network_title">Mreža</string>
+    <string name="network_not_connected">Nije povezano</string>
+    <string name="network_ethernet">Žična mreža</string>
+    <string name="network_signal">Signal</string>
+    <string name="network_speed">Brzina</string>
+    <string name="network_band">Pojas</string>
+    <string name="network_ip">IP adresa</string>
+    <string name="network_gateway">Pristupnik</string>
+    <string name="network_change">Promijeni mrežu</string>
 </resources>

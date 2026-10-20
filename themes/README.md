@@ -50,6 +50,7 @@ is ignored, and a file that doesn't parse is ignored as a whole, so a theme can 
 | `show_stats` | bool | One line under the clock with CPU, free memory and free storage. Off unless set |
 | `ambilight_panel` | bool | An Ambilight pill before Inputs on Philips TVs with the JointSpace API (`https://127.0.0.1:1926/6/`): power, Follow video / Follow audio / Lounge styles, a static colour and brightness. Pairs once with a PIN shown on the TV. `false` by default |
 | `tv_panel` | bool | A TV pill after Ambilight and before Inputs on Philips TVs with the JointSpace API: volume, mute and the picture mode. Reuses the pairing the Ambilight pill sets up. `false` by default |
+| `network_panel` | bool | Makes the network pill open a read-only glass panel with the current connection (SSID or Ethernet, signal, link speed, band, IP and gateway) plus a "Change network" row to the Wi-Fi settings, instead of jumping straight to those settings. The pill label and the long-press are unchanged. No scanning, connecting or passwords. `false` by default |
 | `background_color` | `#RRGGBB` | Colour behind everything; black by default |
 | `sky_intensity` | 0 to 100 | Time-of-day backdrop: a dark gradient that follows the clock, 0 hides it (default) |
 | `wallpaper` | bool | Show `wallpaper.jpg` from the theme folder (`true`), or ignore it (`false`) |

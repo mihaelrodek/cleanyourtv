@@ -157,4 +157,15 @@
     <string name="tv_pic_hdr_game">HDR משחק</string>
     <string name="tv_pic_isf_day">ISF יום</string>
     <string name="tv_pic_isf_night">ISF לילה</string>
+
+    <!-- Network pill panel (config network_panel): read-only connection info. -->
+    <string name="network_title">רשת</string>
+    <string name="network_not_connected">לא מחובר</string>
+    <string name="network_ethernet">רשת קווית</string>
+    <string name="network_signal">עוצמת אות</string>
+    <string name="network_speed">מהירות</string>
+    <string name="network_band">תדר</string>
+    <string name="network_ip">כתובת IP</string>
+    <string name="network_gateway">שער</string>
+    <string name="network_change">שנה רשת</string>
 </resources>

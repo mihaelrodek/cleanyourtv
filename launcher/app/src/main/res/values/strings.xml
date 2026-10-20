@@ -160,4 +160,15 @@
     <string name="tv_pic_hdr_game">HDR Game</string>
     <string name="tv_pic_isf_day">ISF Day</string>
     <string name="tv_pic_isf_night">ISF Night</string>
+
+    <!-- Network pill panel (config network_panel): read-only connection info. -->
+    <string name="network_title">Network</string>
+    <string name="network_not_connected">Not connected</string>
+    <string name="network_ethernet">Ethernet</string>
+    <string name="network_signal">Signal</string>
+    <string name="network_speed">Speed</string>
+    <string name="network_band">Band</string>
+    <string name="network_ip">IP address</string>
+    <string name="network_gateway">Gateway</string>
+    <string name="network_change">Change network</string>
 </resources>
