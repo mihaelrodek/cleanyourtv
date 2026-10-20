@@ -194,6 +194,14 @@
                 android:orientation="horizontal">
 
                 <TextView
+                    android:id="@+id/btnAmbilight"
+                    style="@style/TopButton"
+                    android:text="@string/ambilight"
+                    android:drawableStart="@drawable/ic_ambilight"
+                    android:visibility="gone"
+                    android:nextFocusDown="@+id/grid" />
+
+                <TextView
                     android:id="@+id/btnInputs"
                     style="@style/TopButton"
                     android:text="@string/inputs"

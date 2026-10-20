@@ -90,4 +90,47 @@
     </plurals>
     <!-- The greeting, then greeting_name: "Good morning, Mr. Trịnh". -->
     <string name="greeting_with_name">%1$s, %2$s</string>
+    <!-- Ambilight pill (config ambilight_panel). -->
+    <string name="ambilight" translatable="false">Ambilight</string>
+    <string name="ambilight_pair">Pair with TV</string>
+    <string name="ambilight_pair_again">Pair again</string>
+    <string name="ambilight_requesting_pin">Asking the TV for a PIN…</string>
+    <string name="ambilight_enter_pin">Type the PIN shown on the TV</string>
+    <string name="ambilight_pin_hint">PIN</string>
+    <string name="ambilight_confirm">Confirm</string>
+    <string name="ambilight_pair_busy">The TV is already pairing. Try again in a minute.</string>
+    <string name="ambilight_pair_failed">Pairing failed. Try again.</string>
+    <string name="ambilight_paired_lost">The TV no longer accepts this pairing. Pair again.</string>
+    <string name="ambilight_unreachable">The TV\'s Ambilight service did not answer</string>
+    <string name="ambilight_loading">Loading…</string>
+    <string name="ambilight_power">Power</string>
+    <string name="ambilight_on">On</string>
+    <string name="ambilight_off">Off</string>
+    <string name="ambilight_follow_video">Follow video</string>
+    <string name="ambilight_follow_audio">Follow audio</string>
+    <string name="ambilight_lounge">Lounge</string>
+    <string name="ambilight_colour">Colour</string>
+    <string name="ambilight_brightness">Brightness</string>
+    <string name="ambilight_back">‹  Back</string>
+    <string name="ambilight_current">Now: %1$s</string>
+    <string name="ambilight_standard">Standard</string>
+    <string name="ambilight_natural">Natural</string>
+    <string name="ambilight_immersive">Immersive</string>
+    <string name="ambilight_vivid">Vivid</string>
+    <string name="ambilight_game">Game</string>
+    <string name="ambilight_comfort">Comfort</string>
+    <string name="ambilight_relax">Relax</string>
+    <string name="ambilight_lumina">Lumina</string>
+    <string name="ambilight_colora">Colora</string>
+    <string name="ambilight_retro">Retro</string>
+    <string name="ambilight_spectrum">Spectrum</string>
+    <string name="ambilight_scanner_clockwise">Scanner clockwise</string>
+    <string name="ambilight_scanner">Scanner</string>
+    <string name="ambilight_rhythm">Rhythm</string>
+    <string name="ambilight_party">Party</string>
+    <string name="ambilight_hot_lava">Hot lava</string>
+    <string name="ambilight_deep_water">Deep water</string>
+    <string name="ambilight_fresh_nature">Fresh nature</string>
+    <string name="ambilight_warm_white">Warm white</string>
+    <string name="ambilight_cool_white">Cool white</string>
 </resources>

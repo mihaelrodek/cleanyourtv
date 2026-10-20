@@ -88,4 +88,46 @@
         <item quantity="other">%1$d אפליקציות</item>
     </plurals>
     <string name="greeting_with_name">%1$s, %2$s</string>
+    <!-- Ambilight pill (config ambilight_panel). -->
+    <string name="ambilight_pair">התאמה לטלוויזיה</string>
+    <string name="ambilight_pair_again">התאמה מחדש</string>
+    <string name="ambilight_requesting_pin">מבקש קוד PIN מהטלוויזיה…</string>
+    <string name="ambilight_enter_pin">הקלידו את קוד ה-PIN שמוצג בטלוויזיה</string>
+    <string name="ambilight_pin_hint">PIN</string>
+    <string name="ambilight_confirm">אישור</string>
+    <string name="ambilight_pair_busy">הטלוויזיה כבר בתהליך התאמה. נסו שוב בעוד דקה.</string>
+    <string name="ambilight_pair_failed">ההתאמה נכשלה. נסו שוב.</string>
+    <string name="ambilight_paired_lost">הטלוויזיה כבר לא מקבלת את ההתאמה הזו. בצעו התאמה מחדש.</string>
+    <string name="ambilight_unreachable">שירות ה-Ambilight של הטלוויזיה לא הגיב</string>
+    <string name="ambilight_loading">טוען…</string>
+    <string name="ambilight_power">הפעלה</string>
+    <string name="ambilight_on">פועל</string>
+    <string name="ambilight_off">כבוי</string>
+    <string name="ambilight_follow_video">מעקב אחר וידאו</string>
+    <string name="ambilight_follow_audio">מעקב אחר שמע</string>
+    <string name="ambilight_lounge">טרקלין</string>
+    <string name="ambilight_colour">צבע</string>
+    <string name="ambilight_brightness">בהירות</string>
+    <string name="ambilight_back">‹  חזרה</string>
+    <string name="ambilight_current">כעת: %1$s</string>
+    <string name="ambilight_standard">רגיל</string>
+    <string name="ambilight_natural">טבעי</string>
+    <string name="ambilight_immersive">סוחף</string>
+    <string name="ambilight_vivid">חי</string>
+    <string name="ambilight_game">משחק</string>
+    <string name="ambilight_comfort">נוחות</string>
+    <string name="ambilight_relax">רגיעה</string>
+    <string name="ambilight_lumina">Lumina</string>
+    <string name="ambilight_colora">Colora</string>
+    <string name="ambilight_retro">רטרו</string>
+    <string name="ambilight_spectrum">ספקטרום</string>
+    <string name="ambilight_scanner_clockwise">סורק עם כיוון השעון</string>
+    <string name="ambilight_scanner">סורק</string>
+    <string name="ambilight_rhythm">קצב</string>
+    <string name="ambilight_party">מסיבה</string>
+    <string name="ambilight_hot_lava">לבה לוהטת</string>
+    <string name="ambilight_deep_water">מים עמוקים</string>
+    <string name="ambilight_fresh_nature">טבע רענן</string>
+    <string name="ambilight_warm_white">לבן חם</string>
+    <string name="ambilight_cool_white">לבן קר</string>
 </resources>

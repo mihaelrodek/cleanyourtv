@@ -110,6 +110,9 @@ public class MainActivity extends Activity implements AppAdapter.TileListener {
     private boolean advancedEffects;
     private TextView greeting;
     private View btnInputs;
+    /** Ambilight pill (config ambilight_panel, Philips TVs); its dropdown is built on first use. */
+    private View btnAmbilight;
+    private AmbilightPanel ambilightPanel;
     private TextView btnWifi;
     private TextView shamsiDate;
     private TextView stats;
@@ -426,6 +429,12 @@ public class MainActivity extends Activity implements AppAdapter.TileListener {
         }
 
         btnInputs = findViewById(R.id.btnInputs);
+        btnAmbilight = findViewById(R.id.btnAmbilight);
+        btnAmbilight.setVisibility(cfg.ambilightPanel ? View.VISIBLE : View.GONE);
+        btnAmbilight.setOnClickListener(v -> {
+            if (ambilightPanel == null) ambilightPanel = new AmbilightPanel(this);
+            ambilightPanel.show(v);
+        });
         View btnSettings = findViewById(R.id.btnSettings);
         btnInputs.setOnClickListener(v -> showInputs());
         btnWifi.setOnClickListener(v -> openNetworkPill());
@@ -453,18 +462,20 @@ public class MainActivity extends Activity implements AppAdapter.TileListener {
                 focusTile(lastFocused % COLUMNS);
                 return true;
             }
-            int firstButton = btnInputs.getVisibility() == View.VISIBLE ? R.id.btnInputs : R.id.btnWifi;
+            int firstButton = btnAmbilight.getVisibility() == View.VISIBLE ? R.id.btnAmbilight
+                    : btnInputs.getVisibility() == View.VISIBLE ? R.id.btnInputs : R.id.btnWifi;
             int leftButton = rtlMenuBar ? R.id.btnSettings : firstButton;
             int rightButton = rtlMenuBar ? firstButton : R.id.btnSettings;
             if (keyCode == KeyEvent.KEYCODE_DPAD_LEFT) return v.getId() == leftButton;
             return keyCode == KeyEvent.KEYCODE_DPAD_RIGHT && v.getId() == rightButton;
         };
+        btnAmbilight.setOnKeyListener(pillKeys);
         btnInputs.setOnKeyListener(pillKeys);
         btnWifi.setOnKeyListener(pillKeys);
         btnSettings.setOnKeyListener(pillKeys);
         btnReorder.setOnKeyListener(pillKeys);
         if (advancedEffects) {
-            for (View button : new View[]{btnInputs, btnWifi, btnReorder, btnSettings}) {
+            for (View button : new View[]{btnAmbilight, btnInputs, btnWifi, btnReorder, btnSettings}) {
                 button.setOnFocusChangeListener((view, focused) -> view.animate()
                         .scaleX(focused ? 1.04f : 1f).scaleY(focused ? 1.04f : 1f)
                         .setDuration(160).start());
@@ -1871,7 +1882,7 @@ public class MainActivity extends Activity implements AppAdapter.TileListener {
         rows.getChildAt(0).requestFocus();
     }
 
-    private PopupWindow glassPopup(View panel, int width) {
+    PopupWindow glassPopup(View panel, int width) {
         final PopupWindow popup = new PopupWindow(panel, width, ViewGroup.LayoutParams.WRAP_CONTENT, true);
         popup.setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));   // needed for Back to dismiss
         popup.setOutsideTouchable(true);
@@ -1885,7 +1896,7 @@ public class MainActivity extends Activity implements AppAdapter.TileListener {
     }
 
     /** Drop in: fade and unfold from the top edge, hanging under the anchor pill. */
-    private void dropIn(PopupWindow popup, View panel, View anchor, int gravity) {
+    void dropIn(PopupWindow popup, View panel, View anchor, int gravity) {
         panel.setAlpha(0f);
         panel.setPivotY(0f);
         panel.setScaleY(0.92f);

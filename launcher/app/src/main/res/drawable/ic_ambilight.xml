@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- A TV with light spilling from its top and sides: the Ambilight pill. -->
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="22dp" android:height="22dp"
+    android:viewportWidth="24" android:viewportHeight="24">
+    <path android:fillColor="#FFFFFFFF" android:fillType="evenOdd"
+        android:pathData="M5,6h14v11H5V6zM7,8v7h10V8H7z" />
+    <path android:fillColor="#FFFFFFFF"
+        android:pathData="M1,8h3v1.5H1zM1,13.5h3V15H1zM20,8h3v1.5h-3zM20,13.5h3V15h-3zM8,2h1.5v3H8zM14.5,2H16v3h-1.5zM9,18.5h6V20H9z" />
+</vector>

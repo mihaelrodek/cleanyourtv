@@ -22,4 +22,6 @@
     <locale android:name="fi" />
     <locale android:name="vi" />
     <locale android:name="bn" />
+    <!-- Croatian: only the Ambilight pill so far. -->
+    <locale android:name="hr" />
 </locale-config>

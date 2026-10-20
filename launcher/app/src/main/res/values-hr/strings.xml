@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Croatian: only the Ambilight pill for now; the rest falls back to English until the full translation. -->
+<resources>
+    <!-- Ambilight pill (config ambilight_panel). -->
+    <string name="ambilight_pair">Upari s televizorom</string>
+    <string name="ambilight_pair_again">Ponovno upari</string>
+    <string name="ambilight_requesting_pin">Tražim PIN od televizora…</string>
+    <string name="ambilight_enter_pin">Upišite PIN prikazan na televizoru</string>
+    <string name="ambilight_pin_hint">PIN</string>
+    <string name="ambilight_confirm">Potvrdi</string>
+    <string name="ambilight_pair_busy">Televizor je već u postupku uparivanja. Pokušajte ponovno za minutu.</string>
+    <string name="ambilight_pair_failed">Uparivanje nije uspjelo. Pokušajte ponovno.</string>
+    <string name="ambilight_paired_lost">Televizor više ne prihvaća ovo uparivanje. Ponovno uparite.</string>
+    <string name="ambilight_unreachable">Ambilight usluga televizora ne odgovara</string>
+    <string name="ambilight_loading">Učitavanje…</string>
+    <string name="ambilight_power">Uključivanje</string>
+    <string name="ambilight_on">Uključeno</string>
+    <string name="ambilight_off">Isključeno</string>
+    <string name="ambilight_follow_video">Prati video</string>
+    <string name="ambilight_follow_audio">Prati zvuk</string>
+    <string name="ambilight_lounge">Lounge</string>
+    <string name="ambilight_colour">Boja</string>
+    <string name="ambilight_brightness">Svjetlina</string>
+    <string name="ambilight_back">‹  Natrag</string>
+    <string name="ambilight_current">Trenutno: %1$s</string>
+    <string name="ambilight_standard">Standardno</string>
+    <string name="ambilight_natural">Prirodno</string>
+    <string name="ambilight_immersive">Uranjajuće</string>
+    <string name="ambilight_vivid">Živo</string>
+    <string name="ambilight_game">Igra</string>
+    <string name="ambilight_comfort">Udobno</string>
+    <string name="ambilight_relax">Opušteno</string>
+    <string name="ambilight_lumina">Lumina</string>
+    <string name="ambilight_colora">Colora</string>
+    <string name="ambilight_retro">Retro</string>
+    <string name="ambilight_spectrum">Spektar</string>
+    <string name="ambilight_scanner_clockwise">Skener u smjeru kazaljke</string>
+    <string name="ambilight_scanner">Skener</string>
+    <string name="ambilight_rhythm">Ritam</string>
+    <string name="ambilight_party">Zabava</string>
+    <string name="ambilight_hot_lava">Vruća lava</string>
+    <string name="ambilight_deep_water">Duboka voda</string>
+    <string name="ambilight_fresh_nature">Svježa priroda</string>
+    <string name="ambilight_warm_white">Toplo bijela</string>
+    <string name="ambilight_cool_white">Hladno bijela</string>
+</resources>
