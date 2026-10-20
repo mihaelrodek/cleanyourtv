@@ -18,7 +18,9 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * The quick launch bar: a translucent glass bar of up to 4 app tiles that slides up from the bottom,
@@ -32,6 +34,22 @@ public final class QuickLaunchActivity extends Activity {
 
     private static final int TILE_W_DP = 160, TILE_H_DP = 90, TILE_GAP_DP = 12, TILE_RADIUS_DP = 16;
     private static final float FOCUS_SCALE = 1.06f;
+
+    /** A tile's label and artwork, loaded once and kept for the process so repeat opens are instant:
+     *  the synchronous loadBanner/loadIcon per app was the whole of the open cost on this slow TV. */
+    private static final class TileData {
+        final String label;
+        final Drawable banner;
+        final Drawable icon;
+
+        TileData(String label, Drawable banner, Drawable icon) {
+            this.label = label;
+            this.banner = banner;
+            this.icon = icon;
+        }
+    }
+
+    private static final Map<String, TileData> CACHE = new HashMap<>();
 
     private int[] quickLaunchKeycodes = new int[0];
 
@@ -68,21 +86,26 @@ public final class QuickLaunchActivity extends Activity {
 
         for (int i = 0; i < packages.size(); i++) {
             String pkg = packages.get(i);
-            String label = pkg;
-            Drawable banner = null, icon = null;
-            try {
-                ApplicationInfo info = pm.getApplicationInfo(pkg, 0);
-                label = String.valueOf(pm.getApplicationLabel(info));
-                Drawable b = info.loadBanner(pm);
-                if (b != null && AppAdapter.isBannerShaped(b.getIntrinsicWidth(), b.getIntrinsicHeight())) {
-                    banner = b;
-                } else {
-                    icon = info.loadIcon(pm);
+            TileData data = CACHE.get(pkg);
+            if (data == null) {
+                String label = pkg;
+                Drawable banner = null, icon = null;
+                try {
+                    ApplicationInfo info = pm.getApplicationInfo(pkg, 0);
+                    label = String.valueOf(pm.getApplicationLabel(info));
+                    Drawable b = info.loadBanner(pm);
+                    if (b != null && AppAdapter.isBannerShaped(b.getIntrinsicWidth(), b.getIntrinsicHeight())) {
+                        banner = b;
+                    } else {
+                        icon = info.loadIcon(pm);
+                    }
+                } catch (PackageManager.NameNotFoundException e) {
+                    icon = pm.getDefaultActivityIcon();
                 }
-            } catch (PackageManager.NameNotFoundException e) {
-                icon = pm.getDefaultActivityIcon();
+                data = new TileData(label, banner, icon);
+                CACHE.put(pkg, data);
             }
-            tiles.addView(tile(tiles, pkg, label, banner, icon, rounded, name, motion, density, i > 0));
+            tiles.addView(tile(tiles, pkg, data.label, data.banner, data.icon, rounded, name, motion, density, i > 0));
         }
 
         View first = tiles.getChildAt(0);
@@ -105,6 +128,9 @@ public final class QuickLaunchActivity extends Activity {
         if (gap) lp.leftMargin = Math.round(TILE_GAP_DP * density);
         card.setLayoutParams(lp);
         card.setBackgroundResource(R.drawable.tile_bg);
+        // A focus ring drawn as the foreground: it costs one cheap redraw of the ring when the highlight
+        // moves, where the old scale-on-focus re-composited the whole banner bitmap and was slow here.
+        card.setForeground(getDrawable(R.drawable.quick_tile_focus));
         card.setFocusable(true);
         card.setClickable(true);
         card.setOutlineProvider(rounded);
@@ -132,13 +158,12 @@ public final class QuickLaunchActivity extends Activity {
         });
         card.setOnFocusChangeListener((v, focused) -> {
             if (focused) name.setText(label);
-            float scale = focused ? FOCUS_SCALE : 1f;
+            // The focus ring (foreground selector) marks the highlight. Add the lift only when motion is
+            // on; on a reduced-motion TV the ring alone keeps moving between tiles snappy.
             if (motion) {
+                float scale = focused ? FOCUS_SCALE : 1f;
                 v.animate().scaleX(scale).scaleY(scale).setDuration(focused ? 160 : 120)
                         .setInterpolator(new DecelerateInterpolator()).start();
-            } else {
-                v.setScaleX(scale);
-                v.setScaleY(scale);
             }
         });
         return card;
