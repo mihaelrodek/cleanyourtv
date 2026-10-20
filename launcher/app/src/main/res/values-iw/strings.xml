@@ -132,4 +132,29 @@
     <string name="ambilight_fresh_nature">טבע רענן</string>
     <string name="ambilight_warm_white">לבן חם</string>
     <string name="ambilight_cool_white">לבן קר</string>
+
+    <!-- TV pill (config tv_panel): volume, mute, picture mode. -->
+    <string name="tv_control">טלוויזיה</string>
+    <string name="tv_volume">עוצמת קול</string>
+    <string name="tv_mute">השתקה</string>
+    <string name="tv_unmute">ביטול השתקה</string>
+    <string name="tv_muted">מושתק</string>
+    <string name="tv_picture_mode">מצב תמונה</string>
+    <string name="tv_back">‹  חזרה</string>
+    <string name="tv_unreachable">הטלוויזיה לא הגיבה</string>
+    <string name="tv_pair_hint">פתחו את Ambilight לצורך התאמה</string>
+    <string name="tv_pic_personal">אישי</string>
+    <string name="tv_pic_vivid">חי</string>
+    <string name="tv_pic_natural">טבעי</string>
+    <string name="tv_pic_standard">רגיל</string>
+    <string name="tv_pic_movie">סרט</string>
+    <string name="tv_pic_game">משחק</string>
+    <string name="tv_pic_monitor">מסך</string>
+    <string name="tv_pic_hdr_personal">HDR אישי</string>
+    <string name="tv_pic_hdr_vivid">HDR חי</string>
+    <string name="tv_pic_hdr_natural">HDR טבעי</string>
+    <string name="tv_pic_hdr_movie">HDR סרט</string>
+    <string name="tv_pic_hdr_game">HDR משחק</string>
+    <string name="tv_pic_isf_day">ISF יום</string>
+    <string name="tv_pic_isf_night">ISF לילה</string>
 </resources>

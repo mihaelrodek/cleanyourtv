@@ -49,6 +49,7 @@ is ignored, and a file that doesn't parse is ignored as a whole, so a theme can 
 | `show_home_settings_shortcut` | bool | Keep the optional Default-home tile visible when the TV has a home picker; false by default |
 | `show_stats` | bool | One line under the clock with CPU, free memory and free storage. Off unless set |
 | `ambilight_panel` | bool | An Ambilight pill before Inputs on Philips TVs with the JointSpace API (`https://127.0.0.1:1926/6/`): power, Follow video / Follow audio / Lounge styles, a static colour and brightness. Pairs once with a PIN shown on the TV. `false` by default |
+| `tv_panel` | bool | A TV pill after Ambilight and before Inputs on Philips TVs with the JointSpace API: volume, mute and the picture mode. Reuses the pairing the Ambilight pill sets up. `false` by default |
 | `background_color` | `#RRGGBB` | Colour behind everything; black by default |
 | `sky_intensity` | 0 to 100 | Time-of-day backdrop: a dark gradient that follows the clock, 0 hides it (default) |
 | `wallpaper` | bool | Show `wallpaper.jpg` from the theme folder (`true`), or ignore it (`false`) |

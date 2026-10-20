@@ -113,6 +113,9 @@ public class MainActivity extends Activity implements AppAdapter.TileListener {
     /** Ambilight pill (config ambilight_panel, Philips TVs); its dropdown is built on first use. */
     private View btnAmbilight;
     private AmbilightPanel ambilightPanel;
+    /** TV pill (config tv_panel, Philips TVs); its dropdown is built on first use. */
+    private View btnTv;
+    private TvPanel tvPanel;
     private TextView btnWifi;
     private TextView shamsiDate;
     private TextView stats;
@@ -435,6 +438,12 @@ public class MainActivity extends Activity implements AppAdapter.TileListener {
             if (ambilightPanel == null) ambilightPanel = new AmbilightPanel(this);
             ambilightPanel.show(v);
         });
+        btnTv = findViewById(R.id.btnTv);
+        btnTv.setVisibility(cfg.tvPanel ? View.VISIBLE : View.GONE);
+        btnTv.setOnClickListener(v -> {
+            if (tvPanel == null) tvPanel = new TvPanel(this);
+            tvPanel.show(v);
+        });
         View btnSettings = findViewById(R.id.btnSettings);
         btnInputs.setOnClickListener(v -> showInputs());
         btnWifi.setOnClickListener(v -> openNetworkPill());
@@ -463,6 +472,7 @@ public class MainActivity extends Activity implements AppAdapter.TileListener {
                 return true;
             }
             int firstButton = btnAmbilight.getVisibility() == View.VISIBLE ? R.id.btnAmbilight
+                    : btnTv.getVisibility() == View.VISIBLE ? R.id.btnTv
                     : btnInputs.getVisibility() == View.VISIBLE ? R.id.btnInputs : R.id.btnWifi;
             int leftButton = rtlMenuBar ? R.id.btnSettings : firstButton;
             int rightButton = rtlMenuBar ? firstButton : R.id.btnSettings;
@@ -470,12 +480,13 @@ public class MainActivity extends Activity implements AppAdapter.TileListener {
             return keyCode == KeyEvent.KEYCODE_DPAD_RIGHT && v.getId() == rightButton;
         };
         btnAmbilight.setOnKeyListener(pillKeys);
+        btnTv.setOnKeyListener(pillKeys);
         btnInputs.setOnKeyListener(pillKeys);
         btnWifi.setOnKeyListener(pillKeys);
         btnSettings.setOnKeyListener(pillKeys);
         btnReorder.setOnKeyListener(pillKeys);
         if (advancedEffects) {
-            for (View button : new View[]{btnAmbilight, btnInputs, btnWifi, btnReorder, btnSettings}) {
+            for (View button : new View[]{btnAmbilight, btnTv, btnInputs, btnWifi, btnReorder, btnSettings}) {
                 button.setOnFocusChangeListener((view, focused) -> view.animate()
                         .scaleX(focused ? 1.04f : 1f).scaleY(focused ? 1.04f : 1f)
                         .setDuration(160).start());

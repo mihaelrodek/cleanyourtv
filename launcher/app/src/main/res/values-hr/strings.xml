@@ -51,4 +51,29 @@
     <string name="ambilight_fresh_nature">Svježa priroda</string>
     <string name="ambilight_warm_white">Toplo bijela</string>
     <string name="ambilight_cool_white">Hladno bijela</string>
+
+    <!-- TV pill (config tv_panel): volume, mute, picture mode. -->
+    <string name="tv_control">TV</string>
+    <string name="tv_volume">Glasnoća</string>
+    <string name="tv_mute">Utišaj</string>
+    <string name="tv_unmute">Uključi zvuk</string>
+    <string name="tv_muted">Utišano</string>
+    <string name="tv_picture_mode">Način slike</string>
+    <string name="tv_back">‹  Natrag</string>
+    <string name="tv_unreachable">Televizor ne odgovara</string>
+    <string name="tv_pair_hint">Otvorite Ambilight za uparivanje</string>
+    <string name="tv_pic_personal">Osobno</string>
+    <string name="tv_pic_vivid">Živopisno</string>
+    <string name="tv_pic_natural">Prirodno</string>
+    <string name="tv_pic_standard">Standardno</string>
+    <string name="tv_pic_movie">Film</string>
+    <string name="tv_pic_game">Igra</string>
+    <string name="tv_pic_monitor">Monitor</string>
+    <string name="tv_pic_hdr_personal">HDR osobno</string>
+    <string name="tv_pic_hdr_vivid">HDR živopisno</string>
+    <string name="tv_pic_hdr_natural">HDR prirodno</string>
+    <string name="tv_pic_hdr_movie">HDR film</string>
+    <string name="tv_pic_hdr_game">HDR igra</string>
+    <string name="tv_pic_isf_day">ISF dan</string>
+    <string name="tv_pic_isf_night">ISF noć</string>
 </resources>

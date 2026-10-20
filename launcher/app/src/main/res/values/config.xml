@@ -149,6 +149,11 @@
          once (a PIN shown on screen). Off by default; a theme can set "ambilight_panel": true. -->
     <bool name="ambilight_panel">false</bool>
 
+    <!-- TV pill in the top bar (after Ambilight, before Inputs), for Philips TVs with the JointSpace API
+         on https://127.0.0.1:1926/6/: volume, mute and the picture mode. Uses the pairing the Ambilight
+         panel sets up (pair there first). Off by default; a theme can set "tv_panel": true. -->
+    <bool name="tv_panel">false</bool>
+
     <!-- Time-of-day backdrop behind everything: a dark gradient that follows the clock, with a warm
          horizon glow around sunrise and sunset. 0 keeps the plain background (the default); 1 to 100
          sets its opacity. Around 60 reads clearly without hiding a wallpaper. Can also be set with

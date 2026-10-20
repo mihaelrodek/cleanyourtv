@@ -65,6 +65,7 @@
                 android:gravity="right|bottom">
 
                 <LinearLayout
+                    android:id="@+id/dateBlock"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="bottom"
@@ -224,6 +225,14 @@
                     style="@style/TopButton"
                     android:text="@string/inputs"
                     android:drawableStart="@drawable/ic_input"
+                    android:nextFocusDown="@+id/grid" />
+
+                <TextView
+                    android:id="@+id/btnTv"
+                    style="@style/TopButton"
+                    android:text="@string/tv_control"
+                    android:drawableStart="@drawable/ic_tv_control"
+                    android:visibility="gone"
                     android:nextFocusDown="@+id/grid" />
 
                 <TextView

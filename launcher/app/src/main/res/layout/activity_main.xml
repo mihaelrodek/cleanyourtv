@@ -111,16 +111,26 @@
 
                 </LinearLayout>
 
-                <!-- Date on its own line under the clock, full width of the left block, so the long
-                     Croatian month is not squeezed by the four-pill top bar (was beside the clock). -->
+            </LinearLayout>
+
+            <!-- Date under the clock, as its own block below leftBlock so it runs the full screen width
+                 and is never squeezed by the top-bar pills (leftBlock stops at the pills; this does not). -->
+            <LinearLayout
+                android:id="@+id/dateBlock"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/leftBlock"
+                android:layout_alignParentStart="true"
+                android:layout_marginStart="4dp"
+                android:layout_marginTop="6dp"
+                android:orientation="vertical">
+
                 <!-- Shamsi date ("27 Mehr 1405"), shown when shamsi_date is on. -->
                 <TextView
                     android:id="@+id/shamsiDate"
                     android:gravity="left"
-                    android:layout_width="match_parent"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="4dp"
-                    android:layout_marginTop="6dp"
                     android:singleLine="true"
                     android:ellipsize="end"
                     android:textColor="#E6FFFFFF"
@@ -133,10 +143,8 @@
                 <TextClock
                     android:id="@+id/date"
                     android:gravity="left"
-                    android:layout_width="match_parent"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="4dp"
-                    android:layout_marginTop="6dp"
                     android:singleLine="@bool/date_single_line"
                     android:maxLines="2"
                     android:lineSpacingExtra="4dp"
@@ -151,13 +159,12 @@
 
             </LinearLayout>
 
-            <!-- Shown only when show_stats is on. Outside leftBlock, so the top buttons stay level with the clock
-                 row; gone, it takes no space. -->
+            <!-- Shown only when show_stats is on. Below the date; gone, it takes no space. -->
             <TextView
                 android:id="@+id/stats"
                 android:layout_width="0dp"
-                android:layout_below="@id/leftBlock"
-                android:layout_alignStart="@id/leftBlock"
+                android:layout_below="@id/dateBlock"
+                android:layout_alignStart="@id/dateBlock"
                 android:layout_alignEnd="@id/leftBlock"
                 android:gravity="left"
                 android:layout_height="wrap_content"
@@ -187,6 +194,14 @@
                     style="@style/TopButton"
                     android:text="@string/ambilight"
                     android:drawableStart="@drawable/ic_ambilight"
+                    android:visibility="gone"
+                    android:nextFocusDown="@+id/grid" />
+
+                <TextView
+                    android:id="@+id/btnTv"
+                    style="@style/TopButton"
+                    android:text="@string/tv_control"
+                    android:drawableStart="@drawable/ic_tv_control"
                     android:visibility="gone"
                     android:nextFocusDown="@+id/grid" />
 

@@ -135,4 +135,29 @@
     <string name="ambilight_fresh_nature">Fresh nature</string>
     <string name="ambilight_warm_white">Warm white</string>
     <string name="ambilight_cool_white">Cool white</string>
+
+    <!-- TV pill (config tv_panel): volume, mute, picture mode. -->
+    <string name="tv_control">TV</string>
+    <string name="tv_volume">Volume</string>
+    <string name="tv_mute">Mute</string>
+    <string name="tv_unmute">Unmute</string>
+    <string name="tv_muted">Muted</string>
+    <string name="tv_picture_mode">Picture mode</string>
+    <string name="tv_back">‹  Back</string>
+    <string name="tv_unreachable">The TV did not answer</string>
+    <string name="tv_pair_hint">Open Ambilight to pair</string>
+    <string name="tv_pic_personal">Personal</string>
+    <string name="tv_pic_vivid">Vivid</string>
+    <string name="tv_pic_natural">Natural</string>
+    <string name="tv_pic_standard">Standard</string>
+    <string name="tv_pic_movie">Movie</string>
+    <string name="tv_pic_game">Game</string>
+    <string name="tv_pic_monitor">Monitor</string>
+    <string name="tv_pic_hdr_personal">HDR Personal</string>
+    <string name="tv_pic_hdr_vivid">HDR Vivid</string>
+    <string name="tv_pic_hdr_natural">HDR Natural</string>
+    <string name="tv_pic_hdr_movie">HDR Movie</string>
+    <string name="tv_pic_hdr_game">HDR Game</string>
+    <string name="tv_pic_isf_day">ISF Day</string>
+    <string name="tv_pic_isf_night">ISF Night</string>
 </resources>
