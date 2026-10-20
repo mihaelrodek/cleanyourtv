@@ -86,3 +86,10 @@ org.droidtv.amazonalexa                           # Alexa
 # in use, leave these alone (examples/philips-55pus7503). Apply with the stock launcher disabled.
 #B# com.google.android.tvrecommendations              # Android TV recommendations/content rows (NotificationsService running)
 #B# com.google.android.leanbacklauncher.recommendations
+
+# ---- Batch 5: optional, user does not use the TV Guide ----
+# org.droidtv.channels is the standalone TV Guide (program grid) app, a leanback tile. It also hosts the
+# "zapbar" channel-info overlay (ZapbarActivity) shown when changing channels in Live TV. Disabling it
+# removed the Guide with no crash and left the tuner, playtv, xtv and MediaTek input services running;
+# live TV plays. If the channel-info bar on zapping matters to you, keep this line commented out.
+org.droidtv.channels                              # TV Guide app + channel-zap info overlay
